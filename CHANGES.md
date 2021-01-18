@@ -1,6 +1,8 @@
 # Current version
-Alpha 0.0.03
+Alpha 0.0.05
 # Version changes
+## Alpha 0.0.05
+* Added TheXaman's fast Nurse Joy.
 ## Alpha 0.0.04
 * Added ghoulslash's 'Snow fix'.
 * Added ghoulslahs's 'Surfing dismount fix'.

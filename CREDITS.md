@@ -9,7 +9,9 @@
     * for autorun.
     * for Snow fix.
     * for Surfing dismount fix.
-* TheXaman for running indoors.
+* TheXaman
+    * for running indoors.
+    * for faster Nurse Joy.
 * Avara
     * creating the Decomp simple modifications directory.
     * for changing default options settings.
