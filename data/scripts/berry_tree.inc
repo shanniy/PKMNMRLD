@@ -59,7 +59,7 @@ BerryTree_EventScript_CheckBerryStage1:: @ 82743B1
 BerryTree_EventScript_CheckBerryStage2:: @ 82743C1
 	lockall
 	special ObjectEventInteractionGetBerryName
-	gcheckitem ITEM_WAILMER_PAIL, 1
+	checkitem ITEM_WAILMER_PAIL, 1
 	compare VAR_RESULT, 0
 	goto_if_eq BerryTree_EventScript_DontWater
 	msgbox BerryTree_Text_BerryGrowthStage2, MSGBOX_YESNO
