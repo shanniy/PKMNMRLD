@@ -21,3 +21,4 @@
 * Hiroshi Sotomura
     * broken RNG fix.
     * removing extra save confirmation.
+* dunsparce9 for faster berry interactions.
