@@ -5,9 +5,13 @@
     * for his tutorial and help setting up DizzyEggg's work
     * for forgettable HMs.
 * Jaizu for help setting up DizzyEggg's work.
-* Ghoulslash for autorun.
+* Ghoulslash
+    * for autorun.
+    * for Snow fix.
+    * for Surfing dismount fix.
 * TheXaman for running indoors.
 * Avara
     * creating the Decomp simple modifications directory.
     * for changing default options settings.
 * paccy and ExpoSeed for Exposeed's modified Infinite TM usage tutorial.
+* Hiroshi Sotomura for broken RNG fix.

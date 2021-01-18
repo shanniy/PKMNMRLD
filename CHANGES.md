@@ -2,7 +2,9 @@
 Alpha 0.0.03
 # Version changes
 ## Alpha 0.0.04
-
+* Added ghoulslash's 'Snow fix'.
+* Added ghoulslahs's 'Surfing dismount fix'.
+* Added Hitoshi Sotomura's 'RNG fix'.
 ## Alpha 0.0.03
 * TMs are no longer single-use.
 * TMs cannot be sold.
