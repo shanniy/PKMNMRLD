@@ -3,6 +3,7 @@ Alpha 0.0.05
 # Version changes
 ## Alpha 0.0.05
 * Added TheXaman's fast Nurse Joy.
+* Added Jaizu's lower case Naming screen.
 ## Alpha 0.0.04
 * Added ghoulslash's 'Snow fix'.
 * Added ghoulslahs's 'Surfing dismount fix'.
@@ -17,6 +18,6 @@ Alpha 0.0.05
 * Added auto-run to options menu.
 * Able to run anywhere.
 ## Alpha 0.0.01
-* Merged rhh's 'battle_engine' and 'item_expansion'
+* Merged rhh's 'battle_engine' and 'item_expansion'.
 ## Alpha 0.0.00
-* Clean pokeemerald build
+* Clean pokeemerald build.
