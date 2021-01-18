@@ -1,6 +1,8 @@
 # Current version
 Alpha 0.0.03
 # Version changes
+## Alpha 0.0.04
+
 ## Alpha 0.0.03
 * TMs are no longer single-use.
 * TMs cannot be sold.

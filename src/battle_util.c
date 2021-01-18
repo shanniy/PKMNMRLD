@@ -3639,7 +3639,14 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                         effect++;
                     }
                     break;
-                }
+		case WEATHER_SNOW:
+		    if (!(gBattleWeather & WEATHER_HAIL_ANY))
+		    {
+		        gBattleWeather = (WEATHER_HAIL_PERMANENT | WEATHER_HAIL_TEMPORARY);
+		        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+		        effect++;
+		    }
+		    break;}
             }
             if (effect)
             {
@@ -7096,7 +7103,7 @@ static u32 CalcAttackStat(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, b
         break;
     case ABILITY_ICE_SCALES:
         if (IS_MOVE_SPECIAL(move))
-            MulModifier(&modifier, UQ_4_12(0.5));            
+            MulModifier(&modifier, UQ_4_12(0.5));
         break;
     }
 
