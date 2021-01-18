@@ -123,6 +123,7 @@
 // e.g. If you have both the battle_engine and pokemon_expansion branch,
 //      then both BATTLE_ENGINE and POKEMON_EXPANSION must be defined here.
 #define BATTLE_ENGINE
+#define ITEM_EXPANSION
 
 #define ROUND_BITS_TO_BYTES(numBits)(((numBits) / 8) + (((numBits) % 8) ? 1 : 0))
 
@@ -315,7 +316,7 @@ struct BattleTowerEReaderTrainer
     /*0xB8*/ u32 checksum;
 };
 
-// For displaying party information on the player's Battle Dome tourney page 
+// For displaying party information on the player's Battle Dome tourney page
 struct DomeMonData
 {
     u16 moves[MAX_MON_MOVES];
@@ -439,7 +440,7 @@ struct PlayersApprentice
     /*0xB1*/ u8 questionsAnswered:4;
     /*0xB1*/ u8 leadMonId:2;
     /*0xB2*/ u8 party:3;
-    /*0xB2*/ u8 saveId:2; 
+    /*0xB2*/ u8 saveId:2;
     /*0xB3*/ u8 unused;
     /*0xB4*/ u8 speciesIds[MULTI_PARTY_SIZE];
     /*0xB8*/ struct ApprenticeQuestion questions[APPRENTICE_MAX_QUESTIONS];
