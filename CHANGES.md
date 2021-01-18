@@ -4,6 +4,7 @@ Alpha 0.0.05
 ## Alpha 0.0.05
 * Added TheXaman's fast Nurse Joy.
 * Added Jaizu's lower case Naming screen.
+* Added Hiroshi Sotomura's removing extra save confirmation.
 ## Alpha 0.0.04
 * Added ghoulslash's 'Snow fix'.
 * Added ghoulslahs's 'Surfing dismount fix'.

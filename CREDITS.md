@@ -18,4 +18,6 @@
     * creating the Decomp simple modifications directory.
     * changing default options settings.
 * paccy and ExpoSeed for Exposeed's modified Infinite TM usage tutorial.
-* Hiroshi Sotomura for broken RNG fix.
+* Hiroshi Sotomura
+    * broken RNG fix.
+    * removing extra save confirmation.
