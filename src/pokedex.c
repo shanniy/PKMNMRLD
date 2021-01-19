@@ -355,8 +355,8 @@ static void DestroySplitIcon(void); //Physical/Special Split from BE
 
 //Physical/Special Split from BE
 #define TAG_SPLIT_ICONS 30004
-// static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons.gbapal");
-// static const u32 sSplitIcons_Gfx[] = INCBIN_U32("graphics/interface/split_icons.4bpp.lz");
+static const u16 sSplitIcons_Pal[] = INCBIN_U16("graphics/interface/split_icons.gbapal");
+static const u32 sSplitIcons_Gfx[] = INCBIN_U32("graphics/interface/split_icons.4bpp.lz");
 static const struct OamData sOamData_SplitIcons =
 {
     .size = SPRITE_SIZE(16x16),
@@ -4351,7 +4351,7 @@ static const u8 sMoveTypeToOamPaletteNum[NUMBER_OF_MON_TYPES + CONTEST_CATEGORIE
 static void SetTypeIconPosAndPal(u8 typeId, u8 x, u8 y, u8 spriteArrayId)
 {
     struct Sprite *sprite;
-        
+
     sprite = &gSprites[sPokedexView->typeIconSpriteIds[spriteArrayId]];
     StartSpriteAnim(sprite, typeId);
     sprite->oam.paletteNum = sMoveTypeToOamPaletteNum[typeId];
@@ -4371,7 +4371,7 @@ static void PrintCurrentSpeciesTypeInfo(void)
     type2 = gBaseStats[species].type2;
     if (species == SPECIES_NONE)
         type1 = type2 = TYPE_MYSTERY;
-    
+
     if (type1 == type2)
     {
         SetTypeIconPosAndPal(type1, 147, 48, 0);
@@ -4382,7 +4382,7 @@ static void PrintCurrentSpeciesTypeInfo(void)
         SetTypeIconPosAndPal(type1, 147, 48, 0);
         SetTypeIconPosAndPal(type2, 147 + 33, 48, 1);
     }
-    
+
 }
 static void CreateTypeIconSprites(void)
 {
@@ -4394,7 +4394,7 @@ static void CreateTypeIconSprites(void)
     {
         if (sPokedexView->typeIconSpriteIds[i] == 0xFF)
             sPokedexView->typeIconSpriteIds[i] = CreateSprite(&sSpriteTemplate_MoveTypes, 10, 10, 2);
-    
+
         SetSpriteInvisibility(i, TRUE);
     }
 }
@@ -5128,7 +5128,7 @@ static int DoPokedexSearch(u8 dexMode, u8 order, u8 abcGroup, u8 bodyColor, u8 t
                 break;
             }
         }
-        
+
         for (i = 0, resultsCount = 0; i < sPokedexView->pokemonListCount; i++)
         {
             species = NationalPokedexNumToSpecies(sPokedexView->pokedexList[i].dexNum);
@@ -5658,7 +5658,7 @@ void SetSearchRectHighlight(u8 flags, u8 x, u8 y, u8 width)
         temp &= 0x0fff;
         temp |= (flags << 12);
         *(u16 *)(ptr + (y + 0) * 64 + (x + i) * 2) = temp;
-        
+
         temp = *(u16 *)(ptr + (y + 1) * 64 + (x + i) * 2);
         temp &= 0x0fff;
         temp |= (flags << 12);
@@ -6308,7 +6308,7 @@ static void PrintMoveNameAndInfo(u8 taskId, bool8 toggle)
     u8 numLevelUpMoves  = sPokedexView->numLevelUpMoves;
     u8 numTMHMMoves     = sPokedexView->numTMHMMoves;
     u8 numTutorMoves    = sPokedexView->numTutorMoves;
-    
+
     u8 selected = sPokedexView->moveSelected;
     u8 total = sPokedexView->moveMax;
 
@@ -6345,7 +6345,7 @@ static void PrintMoveNameAndInfo(u8 taskId, bool8 toggle)
         move = sStatsMovesLevelUp[sPokedexView->moveSelected - numEggMoves];
         StringCopy(gStringVar3, gMoveNames[move]);
         StringCopy(gStringVar4, gMoveDescriptionPointers[(move - 1)]);
-        
+
         #if defined (BATTLE_ENGINE) || defined (POKEMON_EXPANSION)
             level = gLevelUpLearnsets[species][(selected-numEggMoves)].level;
         #else
@@ -6467,7 +6467,7 @@ static void PrintMoveNameAndInfo(u8 taskId, bool8 toggle)
         StringAppend(gStringVar2, gStringVar1);
         PrintInfoScreenTextSmall(gStringVar2,  moves_x + 122, moves_y + 64);
     }
-    
+
     //Draw move type icon
     if (gTasks[taskId].data[5] == 0)
     {
@@ -6811,7 +6811,7 @@ static void PrintMonStatsToggle(u8 taskId)
 
     //Abilitie(s)
     if (gTasks[taskId].data[5] == 0)
-    {    
+    {
         ability0 = gBaseStats[species].abilities[0];
         PrintInfoScreenTextSmallWhite(gAbilityNames[ability0], abilities_x, abilities_y);
         PrintInfoScreenTextSmall(gAbilityDescriptionPointers[ability0], abilities_x, abilities_y + 14);
@@ -6820,7 +6820,7 @@ static void PrintMonStatsToggle(u8 taskId)
         {
             PrintInfoScreenTextSmallWhite(gAbilityNames[gBaseStats[species].abilities[1]], abilities_x, abilities_y + 30);
             PrintInfoScreenTextSmall(gAbilityDescriptionPointers[gBaseStats[species].abilities[1]], abilities_x, abilities_y + 44);
-        }  
+        }
     }
     #ifdef POKEMON_EXPANSION
     else //Hidden abilities

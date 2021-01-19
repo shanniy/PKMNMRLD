@@ -14,6 +14,8 @@
 * TheXaman
     * running indoors.
     * faster Nurse Joy.
+    * PokedexPlus.
+* AsparagusEduardo for PokedexPlus.
 * Avara
     * creating the Decomp simple modifications directory.
     * changing default options settings.

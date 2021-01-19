@@ -1,6 +1,8 @@
 # Current version
-Alpha 0.0.05
+Alpha 0.0.06
 # Version changes
+## Alpha 0.0.06
+* Added TheXaman's pokedexPlus.
 ## Alpha 0.0.05
 * Added TheXaman's fast Nurse Joy.
 * Added Jaizu's lower case Naming screen.
