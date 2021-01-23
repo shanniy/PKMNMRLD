@@ -27,6 +27,7 @@ enum
     TD_BUTTONMODE,
     TD_FRAMETYPE,
     TD_RUNMODE,
+    TD_TEXTMODE,
 };
 
 // Menu items
@@ -39,6 +40,7 @@ enum
     MENUITEM_BUTTONMODE,
     MENUITEM_FRAMETYPE,
     MENUITEM_RUNMODE,
+    MENUITEM_TEXTMODE,
     MENUITEM_CANCEL,
     MENUITEM_COUNT,
 };
@@ -56,7 +58,8 @@ enum
 #define YPOS_SOUND        (MENUITEM_SOUND * 16)
 #define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * 16)
 #define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
-#define YPOS_RUNMODE   (MENUITEM_RUNMODE * 16)
+#define YPOS_RUNMODE      (MENUITEM_RUNMODE * 16)
+#define YPOS_TEXTMODE     (MENUITEM_TEXTMODE * 16)
 
 // this file's functions
 static void Task_OptionMenuFadeIn(u8 taskId);
@@ -78,6 +81,8 @@ static u8   ButtonMode_ProcessInput(u8 selection);
 static void ButtonMode_DrawChoices(u8 selection);
 static u8   RunMode_ProcessInput(u8 selection);
 static void RunMode_DrawChoices(u8 selection);
+static u8   TextMode_ProcessInput(u8 selection);
+static void TextMode_DrawChoices(u8 selection);
 static void DrawTextOption(void);
 static void DrawOptionMenuTexts(void);
 static void sub_80BB154(void);
@@ -96,8 +101,9 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
     [MENUITEM_SOUND]       = gText_Sound,
     [MENUITEM_BUTTONMODE]  = gText_ButtonMode,
     [MENUITEM_FRAMETYPE]   = gText_Frame,
-    [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
     [MENUITEM_RUNMODE]     = gText_RunMode,
+    [MENUITEM_TEXTMODE]    = gText_TextMode,
+    [MENUITEM_CANCEL]      = gText_OptionMenuCancel,
 };
 
 static const struct WindowTemplate sOptionMenuWinTemplates[] =
@@ -249,6 +255,7 @@ void CB2_InitOptionMenu(void)
         gTasks[taskId].data[TD_BUTTONMODE] = gSaveBlock2Ptr->optionsButtonMode;
         gTasks[taskId].data[TD_FRAMETYPE] = gSaveBlock2Ptr->optionsWindowFrameType;
         gTasks[taskId].data[TD_RUNMODE] = gSaveBlock2Ptr->optionsRunMode;
+        gTasks[taskId].data[TD_TEXTMODE] = gSaveBlock2Ptr->optionsTextMode;
 
         TextSpeed_DrawChoices(gTasks[taskId].data[TD_TEXTSPEED]);
         BattleScene_DrawChoices(gTasks[taskId].data[TD_BATTLESCENE]);
@@ -257,6 +264,8 @@ void CB2_InitOptionMenu(void)
         ButtonMode_DrawChoices(gTasks[taskId].data[TD_BUTTONMODE]);
         FrameType_DrawChoices(gTasks[taskId].data[TD_FRAMETYPE]);
         RunMode_DrawChoices(gTasks[taskId].data[TD_RUNMODE]);
+        TextMode_DrawChoices(gTasks[taskId].data[TD_TEXTMODE]);
+
         HighlightOptionMenuItem(gTasks[taskId].data[TD_MENUSELECTION]);
 
         CopyWindowToVram(WIN_OPTIONS, 3);
@@ -359,6 +368,12 @@ static void Task_OptionMenuProcessInput(u8 taskId)
             if (previousOption != gTasks[taskId].data[TD_RUNMODE])
                 RunMode_DrawChoices(gTasks[taskId].data[TD_RUNMODE]);
 	    break;
+        case MENUITEM_TEXTMODE:
+            previousOption = gTasks[taskId].data[TD_TEXTMODE];
+            gTasks[taskId].data[TD_TEXTMODE] = TextMode_ProcessInput(gTasks[taskId].data[TD_TEXTMODE]);
+            if (previousOption != gTasks[taskId].data[TD_TEXTMODE])
+                TextMode_DrawChoices(gTasks[taskId].data[TD_TEXTMODE]);
+	        break;
         default:
             return;
         }
@@ -380,6 +395,7 @@ static void Task_OptionMenuSave(u8 taskId)
     gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].data[TD_BUTTONMODE];
     gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].data[TD_FRAMETYPE];
     gSaveBlock2Ptr->optionsRunMode = gTasks[taskId].data[TD_RUNMODE];
+    gSaveBlock2Ptr->optionsTextMode = gTasks[taskId].data[TD_TEXTMODE];
 
     BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
@@ -659,6 +675,28 @@ static void RunMode_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_RunTypeNormal, 104, YPOS_RUNMODE, styles[0]);
     DrawOptionMenuChoice(gText_RunTypeAuto, GetStringRightAlignXOffset(1, gText_RunTypeAuto, 198), YPOS_RUNMODE, styles[1]);
+}
+
+static u8 TextMode_ProcessInput(u8 selection)
+{
+    if (JOY_NEW(DPAD_RIGHT) || JOY_NEW(DPAD_LEFT))
+    {
+        selection = 1 - selection;
+        sArrowPressed = TRUE;
+    }
+    return selection;
+}
+
+static void TextMode_DrawChoices(u8 selection)
+{
+    u8 styles[2];
+
+    styles[0] = 0;
+    styles[1] = 0;
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_TextTypeNormal, 104, YPOS_TEXTMODE, styles[0]);
+    DrawOptionMenuChoice(gText_TextTypeAuto, GetStringRightAlignXOffset(1, gText_TextTypeAuto, 198), YPOS_TEXTMODE, styles[1]);
 }
 
 static void DrawTextOption(void)
